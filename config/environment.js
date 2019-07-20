@@ -6,6 +6,12 @@ module.exports = function(environment) {
     environment,
     rootURL: '/',
     locationType: 'auto',
+    firebase:{
+      apiKey: "AIzaSyCX-Z4f2WSbGZCUELhzZtRFjMGctN4GB5c",
+      authDomain: "schoolproject-1555732245898.firebaseapp.com",
+      databaseURL: "https://schoolproject-1555732245898.firebaseio.com",
+      storageBucket: "schoolproject-1555732245898.appspot.com",
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -18,6 +24,12 @@ module.exports = function(environment) {
     },
 
     APP: {
+      browserify: {
+        extensions: ['.coffee'],
+        transform: [
+          ['caching-coffeeify', { global: true }]
+        ]
+      },
       // Here you can pass flags/options to your application instance
       // when it is created
     }

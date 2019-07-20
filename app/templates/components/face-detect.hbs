@@ -1,0 +1,168 @@
+{{!-- <img src="{{dataUri}}"> --}}
+
+{{!-- <div class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Name</label>
+    <div class="col-sm-10">
+      {{input type="text" value=newName placeholder="input name..." disabled=isDisabled}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-10">
+      {{input type="email" value=emailAddress placeholder="input email..." disabled=isDisabled}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Password</label>
+    <div class="col-sm-10"> --}}
+      {{!-- <div class="test-place-autocomplete-container" data-google-auto="{{googleAuto}}">
+        {{place-autocomplete-field
+          value= model.address
+          handlerController= this
+          inputClass= 'place-autocomplete--input'
+          focusOutCallback="done"
+          placeChangedCallback="placeChanged"
+          placeholder="Custom placeholder"
+        }}
+      </div> --}}
+      {{!-- {{g-map lat="51.508530" lng="-0.076132" zoom=12}} --}}
+      {{!-- {{input type="password" value=newPassword placeholder="input password..." disabled=isDisabled}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Confirm password</label>
+    <div class="col-sm-10">
+      {{input type="password" value=passwordConfirm placeholder="confirm password..." disabled=isDisabled}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Username</label>
+    <div class="col-sm-10">
+      {{input type="text" value=newUsername placeholder="input username..." disabled=isDisabled}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Phone Number</label>
+    <div class="col-sm-10">
+      {{input type="text" value=newPhoneNumber placeholder="input username..." disabled=isDisabled}}
+    </div>
+  </div>
+  <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-4 col-md-3">
+       <button class="btn btn-primary btn-lg btn-block" {{action 'saveNewUser'}} disabled={{isDisabled2}}>Request invitation</button>
+     </div>
+</div> --}}
+
+<div class="page-wrapper p-b-50">
+    <div class="wrapper wrapper--w900">
+      {{#ember-webcam
+        didSnap=(action 'didSnap')
+        didError=(action 'didError')
+        as |camera|}}
+        <button class="btn btn--radius-2 btn--blue-2 btn-snapshot" {{action camera.snap}}>
+          Take Snapshot!
+        </button>
+      {{/ember-webcam}}
+      {{!-- <canvas id="tools_sketch" width="900" height="200" style="border:1px solid #000000;">
+      Sorry, your browser doesn't support the &lt;canvas&gt; element.     
+      </canvas> --}}
+        <div class="card card-6">
+            <div class="card-heading">
+                <h2 class="title">Apply for job</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    {{#if gender}}
+                      <div class="form-row">
+                        <div class="top">{{gender}},&nbsp;{{age}}</div>
+                      </div>
+                    {{/if}}
+                    <div class="form-row">
+                        <div class="name">Full Name</div>
+                        <div class="value">
+                          {{input type="text" value=newName placeholder="input name..." disabled=isDisabled class="input--style-6"}}
+                            {{!-- <input class="input--style-6" type="text" name="full_name"> --}}
+                          {{#unless isValid}}
+                            <div class="label--desc validation">Name must be entered</div>
+                          {{/unless}}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Email Address</div>
+                        <div class="value">
+                            <div class="input-group">
+                              {{input type="email" value=emailAddress placeholder="input email..." disabled=isDisabled class="input--style-6" placeholder="example@email.com"}}
+                              {{!-- <input class="input--style-6" type="email" name="email" placeholder="example@email.com"> --}}
+                            </div>
+                            {{#unless isValid1}}
+                              <div class="label--desc validation">E-mail must be valid</div>
+                            {{/unless}}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Phone Number</div>
+                        <div class="value">
+                            <div class="input-group">
+                              {{input type="text" value=newPhoneNumber placeholder="081540489671" disabled=isDisabled class="input--style-6"}}
+                                {{!-- <input class="input--style-6" type="text" name="phonenumber" placeholder="081234556789"> --}}
+                              {{#unless isValid2}}
+                                <div class="label--desc validation">Phone number must be valid</div>
+                              {{/unless}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Password</div>
+                        <div class="value">
+                            <div class="input-group">
+                              {{input type="password" value=newPassword placeholder="input password..." disabled=isDisabled class="input--style-6" placeholder="******"}}
+                                {{!-- <input class="input--style-6" type="password" name="password" placeholder="******"> --}}
+                            </div>
+                            <div class="label--desc">Password must contain at least 6 characters</div>
+                            {{#unless isValid3}}
+                              <div class="label--desc validation">The password must be entered</div>
+                            {{/unless}}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Confirmation Password</div>
+                        <div class="value">
+                            <div class="input-group">
+                              {{input type="password" value=passwordConfirm placeholder="confirm password..." disabled=isDisabled class="input--style-6" placeholder="******" key-up=(action "updateFirstName")}}
+                                {{!-- <input class="input--style-6" type="password" name="confpass" placeholder="******"> --}}
+                            </div>
+                            <div class="label--desc">Re-enter your password</div>
+                            {{#unless isValid4}}
+                              <div class="label--desc validation">The password does not match</div>
+                            {{/unless}}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Input your Username</div>
+                        <div class="value">
+                            <div class="input-group">
+                              {{input type="text" value=newUsername placeholder="input username..." disabled=isDisabled class="input--style-6"}}
+                                {{!-- <input class="input--style-6" type="text" name="username"> --}}
+                            </div>
+                            <div class="label--desc">Enter the desired username</div>
+                            {{#unless isValid5}}
+                              <div class="label--desc validation">Username must be entered</div>
+                            {{/unless}}
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn--radius-2 btn--blue-2" {{action 'saveNewUser'}} disabled={{isDisabled7}} type="submit">Send Application</button>
+            </div>
+              {{!-- <audio controls>
+                <source id="source" src="" type="audio/wav">
+              </audio> --}}
+        </div>
+    </div>
+</div>
+
+{{!-- <input type="file" value=imageTemp> --}}
+{{!-- {{input type="file" value=imageTemp}} --}}
+{{!-- {{input type="text" value=coba placeholder="test"}} --}}
+{{!-- <button {{action "didSnap"}}>Submit</button> --}}
